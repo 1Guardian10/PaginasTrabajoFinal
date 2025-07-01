@@ -9,12 +9,12 @@ interface StatsCardProps {
 
 export function StatsCard({ icon: Icon, title, description, iconColor = "text-gray-700" }: StatsCardProps) {
   return (
-    <div className="p-4 bg-white border rounded-lg text-center shadow-sm">
-      <div className="mb-2 flex justify-center">
-        <Icon className={`w-8 h-8 ${iconColor}`} />
+    <div className="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform border text-center">
+      <div className="mb-4 flex justify-center items-center">
+        <Icon className={`w-10 h-10 ${iconColor}`} />
       </div>
-      <h3 className="text-xl font-bold text-gray-800">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+      <p className="text-gray-500 text-sm mt-1">{description}</p>
     </div>
   )
 }

@@ -8,238 +8,164 @@ import { VideoPlayer } from "../../Components/VideoPlayer"
 export default function EnergiaSolarPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <HeroSection
-        badge="ENERGÍA SOLAR"
-        title="EL PODER DEL SOL"
-        subtitle="ENERGÍA LIMPIA"
-        description="La energía solar es una de las fuentes de energía renovable más prometedoras para combatir el cambio climático. Aprende cómo funciona, sus beneficios ambientales y económicos, y cómo puedes aprovecharla en tu hogar o comunidad."
-        primaryButtonText="Aprender Más"
-        secondaryButtonText="Ver Datos"
-        backgroundGradient="from-yellow-50 to-orange-50"
-      >
-        <div className="w-96 mx-auto relative overflow-hidden">
-          <VideoPlayer
-            src="/Video/Solar.mp4"
-            poster="/placeholder.svg?height=400&width=600"
-          />
-        </div>
-        {/* Floating icons */}
-        <div className="relative mt-6 flex justify-center gap-8">
-          <div className="bg-white rounded-full p-3 shadow-lg">
-            <Leaf className="w-6 h-6 text-green-500" />
-          </div>
-          <div className="bg-white rounded-full p-3 shadow-lg">
-            <Zap className="w-6 h-6 text-red-500" />
-          </div>
-        </div>
-      </HeroSection>
 
-      {/* How Solar Works */}
+      {/* Hero Section con video al costado */}
+      <section className="bg-gradient-to-br from-yellow-50 to-orange-100 py-16">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+          <div className="lg:w-1/2 text-center lg:text-left">
+            <HeroSection
+              badge="ENERGÍA SOLAR"
+              title="EL PODER DEL SOL"
+              subtitle="ENERGÍA LIMPIA"
+              description="La energía solar es una de las fuentes renovables más prometedoras. Aprende cómo funciona, sus beneficios y cómo aprovecharla en tu vida."
+            />
+          </div>
+          <div className="lg:w-1/2 w-full max-w-xl mx-auto">
+            <VideoPlayer
+              src="/Video/Solar.mp4"
+              poster="/placeholder.svg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ¿Cómo funciona la energía solar? */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">¿Cómo Funciona la Energía Solar?</h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Entiende el proceso de conversión de luz solar en electricidad
-            </p>
-          </div>
-
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">¿Cómo Funciona la Energía Solar?</h2>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-10">
+            Convertimos la luz solar en electricidad mediante un sistema limpio y tecnológico.
+          </p>
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               icon={Sun}
               title="Captación Solar"
-              description="Los paneles solares capturan la luz del sol mediante células fotovoltaicas que convierten los fotones en electricidad de corriente continua."
-              buttonText="Más Detalles"
+              description="Los paneles capturan fotones y generan corriente continua."
               iconColor="text-yellow-600"
               iconBgColor="bg-yellow-100"
-              buttonColor="border-yellow-500 text-yellow-600 hover:bg-yellow-50"
             />
-
             <FeatureCard
               icon={Zap}
               title="Conversión de Energía"
-              description="Un inversor convierte la corriente continua en corriente alterna, que es la que utilizamos en nuestros hogares y dispositivos eléctricos."
-              buttonText="Aprender"
+              description="Un inversor transforma esa energía en corriente alterna."
               iconColor="text-orange-600"
               iconBgColor="bg-orange-100"
-              buttonColor="border-orange-500 text-orange-600 hover:bg-orange-50"
             />
-
             <FeatureCard
               icon={Home}
               title="Uso Doméstico"
-              description="La electricidad generada puede usarse inmediatamente en el hogar o almacenarse en baterías para uso posterior, incluso durante la noche."
-              buttonText="Explorar"
+              description="La energía se usa en el hogar o se almacena para la noche."
               iconColor="text-blue-600"
               iconBgColor="bg-blue-100"
-              buttonColor="border-blue-500 text-blue-600 hover:bg-blue-50"
             />
           </div>
         </div>
       </section>
 
-      {/* Global Solar Facts */}
+      {/* Datos Globales */}
       <section className="py-20 bg-yellow-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">Datos Globales de Energía Solar</h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Cifras que demuestran el crecimiento y potencial de la energía solar mundial
-            </p>
-          </div>
-
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-6">Datos Globales de Energía Solar</h2>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-10">
+            Cifras que demuestran el crecimiento y potencial solar en el mundo.
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <StatsCard
-              icon={Sun}
-              title="1,177 GW"
-              description="Capacidad solar instalada globalmente en 2022"
-              iconColor="text-yellow-600"
-            />
-
-            <StatsCard
-              icon={TrendingUp}
-              title="22%"
-              description="Crecimiento anual de instalaciones solares"
-              iconColor="text-green-600"
-            />
-
-            <StatsCard
-              icon={Leaf}
-              title="1.2 Gt"
-              description="CO2 evitado anualmente por energía solar"
-              iconColor="text-green-600"
-            />
-
-            <StatsCard
-              icon={DollarSign}
-              title="85%"
-              description="Reducción de costos solares desde 2010"
-              iconColor="text-blue-600"
-            />
+            <StatsCard icon={Sun} title="1,177 GW" description="Capacidad instalada global en 2022" iconColor="text-yellow-600" />
+            <StatsCard icon={TrendingUp} title="22%" description="Crecimiento anual de instalaciones" iconColor="text-green-600" />
+            <StatsCard icon={Leaf} title="1.2 Gt" description="CO₂ evitado anualmente" iconColor="text-green-600" />
+            <StatsCard icon={DollarSign} title="85%" description="Reducción de costos desde 2010" iconColor="text-blue-600" />
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Beneficios de la energía solar */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Texto con íconos */}
             <div>
               <h2 className="text-4xl font-bold text-gray-800 mb-6">Beneficios de la Energía Solar</h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                La energía solar ofrece múltiples ventajas tanto para el medio ambiente como para la economía personal y
-                global.
+                Energía limpia, confiable y accesible para hogares y empresas.
               </p>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <Leaf className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Cero emisiones de gases de efecto invernadero</span>
+              {[
+                { icon: Leaf, text: "Cero emisiones de gases contaminantes", color: "text-green-600" },
+                { icon: DollarSign, text: "Reducción significativa de costos energéticos", color: "text-green-600" },
+                { icon: Shield, text: "Fuente confiable e inagotable", color: "text-blue-600" },
+                { icon: TrendingUp, text: "Aumenta el valor de tu propiedad", color: "text-purple-600" },
+              ].map(({ icon: Icon, text, color }, i) => (
+                <div key={i} className="flex items-center space-x-3 mb-3">
+                  <Icon className={`w-5 h-5 ${color}`} />
+                  <span className="text-gray-700">{text}</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <DollarSign className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Reduce significativamente las facturas eléctricas</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Shield className="w-5 h-5 text-blue-600" />
-                  <span className="text-gray-700">Fuente de energía inagotable y confiable</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <TrendingUp className="w-5 h-5 text-purple-600" />
-                  <span className="text-gray-700">Aumenta el valor de las propiedades</span>
-                </div>
-              </div>
+              ))}
             </div>
 
+            {/* Stats compactos */}
             <div className="grid grid-cols-2 gap-6">
-              <StatsCard
-                icon={Sun}
-                title="Abundante"
-                description="El sol proporciona 10,000 veces más energía de la que usa la humanidad"
-                iconColor="text-yellow-600"
-              />
-
-              <StatsCard
-                icon={Leaf}
-                title="Limpia"
-                description="No produce contaminación durante su operación"
-                iconColor="text-green-600"
-              />
-
-              <StatsCard
-                icon={DollarSign}
-                title="Económica"
-                description="Costos de instalación cada vez más accesibles"
-                iconColor="text-blue-600"
-              />
-
-              <StatsCard
-                icon={Shield}
-                title="Duradera"
-                description="Paneles solares duran 25-30 años con mínimo mantenimiento"
-                iconColor="text-purple-600"
-              />
+              <StatsCard icon={Sun} title="Abundante" description="El sol brinda 10,000x más energía de la que usamos" iconColor="text-yellow-600" />
+              <StatsCard icon={Leaf} title="Limpia" description="Sin contaminación durante operación" iconColor="text-green-600" />
+              <StatsCard icon={DollarSign} title="Económica" description="Costos cada vez más bajos" iconColor="text-blue-600" />
+              <StatsCard icon={Shield} title="Duradera" description="Paneles con 25-30 años de vida útil" iconColor="text-purple-600" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* What You Can Do */}
+      {/* Cómo puedes aprovechar la energía solar */}
       <section className="py-20 bg-yellow-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">Cómo Puedes Aprovechar la Energía Solar</h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Opciones para incorporar energía solar en tu vida diaria
-            </p>
-          </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-6">¿Cómo Aprovechar la Energía Solar?</h2>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-10">
+            Opciones accesibles para hogares, comunidades y empresas.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Home className="w-8 h-8 text-yellow-600" />
+            {[
+              {
+                icon: Home,
+                title: "En tu Hogar",
+                desc: "Instala paneles en el techo, calentadores solares o luces LED solares.",
+                bg: "bg-yellow-100",
+                color: "text-yellow-600",
+                footer: "Ahorro: 50–90% en la factura"
+              },
+              {
+                icon: Factory,
+                title: "En la Comunidad",
+                desc: "Apoya o lidera proyectos comunitarios solares y políticas públicas.",
+                bg: "bg-blue-100",
+                color: "text-blue-600",
+                footer: "Impacto: Masivo"
+              },
+              {
+                icon: Leaf,
+                title: "Cambios Simples",
+                desc: "Usa cargadores solares, lámparas solares o productos ecoenergéticos.",
+                bg: "bg-green-100",
+                color: "text-green-600",
+                footer: "Costo: Desde $20 USD"
+              }
+            ].map(({ icon: Icon, title, desc, bg, color, footer }, i) => (
+              <div key={i} className="bg-white p-8 rounded-xl shadow hover:shadow-lg transition text-center">
+                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${bg}`}>
+                  <Icon className={`w-8 h-8 ${color}`} />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+                <p className="text-gray-600 mb-4">{desc}</p>
+                <span className="text-sm text-gray-500">{footer}</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">En Tu Hogar</h3>
-              <p className="text-gray-600 mb-6">
-                Considera instalar paneles solares en tu techo, usar calentadores solares de agua, o dispositivos
-                solares pequeños.
-              </p>
-              <div className="text-sm text-gray-500">Ahorro: 50-90% en electricidad</div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Factory className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">En Tu Comunidad</h3>
-              <p className="text-gray-600 mb-6">
-                Promueve proyectos solares comunitarios, apoya políticas de energía renovable en tu localidad.
-              </p>
-              <div className="text-sm text-gray-500">Impacto: Beneficia a toda la comunidad</div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Leaf className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Cambios Simples</h3>
-              <p className="text-gray-600 mb-6">
-                Usa cargadores solares, luces solares para jardín, y apoya empresas que usan energía renovable.
-              </p>
-              <div className="text-sm text-gray-500">Costo: Desde $20 USD</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* CTA Final */}
       <CTASection
         title="¡Ilumina Tu Futuro con Energía Solar!"
-        description="La energía solar es clave para un futuro sostenible. Aprende más, comparte esta información y considera cómo puedes incorporar esta tecnología limpia en tu vida."
-        primaryButtonText="Compartir Información"
-        secondaryButtonText="Explorar Más Temas"
-        backgroundColor="bg-yellow-600"
+        description="La energía solar es clave para un futuro sostenible. Aprende, comparte e intégrala en tu vida diaria."
+        backgroundColor="bg-gradient-to-r from-yellow-500 to-orange-500"
       />
     </div>
   )

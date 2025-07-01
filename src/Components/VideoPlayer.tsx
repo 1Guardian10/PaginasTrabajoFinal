@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react"
-import { Play, Pause, Volume2, VolumeX, Maximize, Minimize, Wind } from "lucide-react"
+import {
+  Play, Pause, Volume2, VolumeX, Maximize, Minimize, Wind
+} from "lucide-react"
 
 interface VideoPlayerProps {
   src: string
@@ -7,11 +9,7 @@ interface VideoPlayerProps {
   className?: string
 }
 
-export function VideoPlayer({
-  src,
-  poster,
-  className = "",
-}: VideoPlayerProps) {
+export function VideoPlayer({ src, poster, className = "" }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -47,11 +45,7 @@ export function VideoPlayer({
     const video = videoRef.current
     if (!video) return
 
-    if (isPlaying) {
-      video.pause()
-    } else {
-      video.play()
-    }
+    isPlaying ? video.pause() : video.play()
     setIsPlaying(!isPlaying)
   }
 
@@ -86,73 +80,66 @@ export function VideoPlayer({
     return `${minutes}:${seconds.toString().padStart(2, "0")}`
   }
 
-
   return (
-    <div className={`relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 ${className}`}>
-
-
-      {/* Video Container */}
+    <div className={`relative bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-200 ${className}`}>
+      {/* Contenedor del video */}
       <div
         className="relative w-full aspect-video bg-black group"
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
-        <video ref={videoRef} src={src} poster={poster} className="w-full h-full object-cover" onClick={togglePlay} />
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster}
+          className="w-full h-full object-cover rounded-xl"
+          onClick={togglePlay}
+        />
 
-        {/* Loading Overlay */}
+        {/* Loader */}
         {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="bg-blue-100 rounded-full p-4">
-              <Wind className="w-8 h-8 text-blue-600 animate-spin" />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-10">
+            <div className="p-4 bg-white rounded-full shadow animate-spin">
+              <Wind className="text-blue-500 w-6 h-6" />
             </div>
           </div>
         )}
 
-        {/* Play Button Overlay */}
+        {/* Botón de reproducción centrado */}
         {!isPlaying && !isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <button
-                onClick={togglePlay}
-                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 shadow-lg flex items-center justify-center"
-                >
-                <Play className="w-8 h-8 fill-white" />
-            </button>
-          </div>
+          <button
+            onClick={togglePlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors z-10"
+          >
+            <div className="w-16 h-16 bg-emerald-600 hover:bg-emerald-700 rounded-full flex items-center justify-center shadow-lg transition-all">
+              <Play className="w-8 h-8 text-white" />
+            </div>
+          </button>
         )}
 
-        {/* Controls */}
+        {/* Controles inferiores */}
         <div
-          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0"}`}
+          className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm text-white transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0"}`}
         >
-
-          {/* Control Buttons */}
-          <div className="flex items-center justify-between text-white">
-            <div className="flex items-center gap-2">
-              <button onClick={togglePlay} className="text-white hover:bg-white/20 w-10 h-10">
+          <div className="flex items-center justify-between">
+            {/* Controles izquierda */}
+            <div className="flex items-center gap-3">
+              <button onClick={togglePlay} className="hover:bg-white/10 p-2 rounded-full">
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 fill-white" />}
               </button>
-
-              <div className="flex items-center gap-2 ml-2">
-                <button
-                  onClick={toggleMute}
-                  className="text-white hover:bg-white/20 w-10 h-10"
-                >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                </button>
-              </div>
+              <button onClick={toggleMute} className="hover:bg-white/10 p-2 rounded-full">
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              </button>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">
+            {/* Controles derecha */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-light">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
-
-              <button
-                onClick={toggleFullscreen}
-                className="text-white hover:bg-white/20 w-10 h-10 flex items-center justify-center"
-                >
-                {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
-               </button>
+              <button onClick={toggleFullscreen} className="hover:bg-white/10 p-2 rounded-full">
+                {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
+              </button>
             </div>
           </div>
         </div>
